@@ -3,9 +3,14 @@ using System.ComponentModel;
 
 namespace Shortcut
 {
-    [Serializable]
-    public class HotkeyNotBoundException : Win32Exception
-    {
 
+    [Serializable]
+    public sealed class HotkeyNotBoundException : Win32Exception
+    {
+        public HotkeyNotBoundException(int errorCode)
+            : base (errorCode)
+        {
+            
+        }
     }
 }

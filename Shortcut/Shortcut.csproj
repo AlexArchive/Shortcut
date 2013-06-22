@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enum.cs" />
+    <Compile Include="HotkeyAlreadyBoundException.cs" />
     <Compile Include="HotkeyBinder.cs" />
     <Compile Include="HotkeyCallback.cs" />
     <Compile Include="HotkeyCombination.cs" />

@@ -1,29 +1,27 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Shortcut.Demo.Forms
 {
     public partial class MainForm : Form
     {
-        private static readonly HotkeyBinder _hotkeyBinder = 
-            new HotkeyBinder();
+        private static readonly HotkeyBinder _hotkeyBinder = new HotkeyBinder();
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, System.EventArgs e)
         {
-            HotkeyCombination captureScreenHotkey = 
+            HotkeyCombination captureScreenHotkeyCombination = 
                 new HotkeyCombination(Modifiers.Control, Keys.P);
 
-            _hotkeyBinder.Bind(captureScreenHotkey).To(CaptureScreen);
+            _hotkeyBinder.Bind(captureScreenHotkeyCombination).To(CaptureFullScreen);
         }
 
-        private void CaptureScreen()
+        private void CaptureFullScreen()
         {
-            MessageBox.Show("Capturing Screen!");
+            MessageBox.Show("Capturing screen!");
         }
     }
 }

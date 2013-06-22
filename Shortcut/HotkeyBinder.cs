@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace Shortcut
@@ -23,10 +22,21 @@ namespace Shortcut
                 throw new ArgumentNullException("hotkeyCombination");
 
             HotkeyCallback callback = new HotkeyCallback(this);
-            _hotkeyCallbacks.Add(hotkeyCombination, callback);
+            Foo(hotkeyCombination, callback);
+
             RegisterHotkeyCombination(hotkeyCombination);
+
             return callback;
         }
+
+        private void Foo(HotkeyCombination hotkeyCombination, HotkeyCallback callback)
+        {
+            if (_hotkeyCallbacks.ContainsKey(hotkeyCombination))
+                throw new HotkeyAlreadyBoundException("This hotkey has already been bound");
+            
+            _hotkeyCallbacks.Add(hotkeyCombination, callback);
+        }
+        
 
         private void OnHotkeyPressed(object sender, HotkeyPressedEventArgs e)
         {
@@ -37,20 +47,17 @@ namespace Shortcut
         private void RegisterHotkeyCombination(HotkeyCombination hotkeyCombination)
         {
             bool success = NativeMethods.RegisterHotKey(_hotkeyWindow.Handle, hotkeyCombination.GetHashCode(), (uint) hotkeyCombination.Modifier, (uint) hotkeyCombination.Key);
-
+            
             if (success == false)
-            {
-                Marshal.GetLastWin32Error();
-            }
+                throw new HotkeyAlreadyBoundException(Marshal.GetLastWin32Error());
         }
 
         public void UnregisterHotkeyCombination(HotkeyCombination hotkeyCombination)
         {
-            if (!NativeMethods.UnregisterHotKey(_hotkeyWindow.Handle, hotkeyCombination.GetHashCode()))
-                throw new Exception("", new Win32Exception(Marshal.GetLastWin32Error()));
+            bool success = NativeMethods.UnregisterHotKey(_hotkeyWindow.Handle, hotkeyCombination.GetHashCode());
 
-
-
+            if (success == false)
+                throw new HotkeyNotBoundException(Marshal.GetLastWin32Error());
         }
 
 
