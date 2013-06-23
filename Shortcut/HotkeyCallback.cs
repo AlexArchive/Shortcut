@@ -2,6 +2,9 @@
 
 namespace Shortcut
 {
+    /// <summary>
+    /// Some Comment 
+    /// </summary>
     public class HotkeyCallback
     {
         private readonly HotkeyBinder _parent;
