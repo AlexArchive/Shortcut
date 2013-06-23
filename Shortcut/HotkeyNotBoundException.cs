@@ -3,7 +3,6 @@ using System.ComponentModel;
 
 namespace Shortcut
 {
-
     [Serializable]
     public sealed class HotkeyNotBoundException : Win32Exception
     {

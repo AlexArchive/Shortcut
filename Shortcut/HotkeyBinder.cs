@@ -22,14 +22,14 @@ namespace Shortcut
                 throw new ArgumentNullException("hotkeyCombination");
 
             HotkeyCallback callback = new HotkeyCallback(this);
-            Foo(hotkeyCombination, callback);
+            AddHotkeyCombinationToDictionary(hotkeyCombination, callback);
 
             RegisterHotkeyCombination(hotkeyCombination);
 
             return callback;
         }
 
-        private void Foo(HotkeyCombination hotkeyCombination, HotkeyCallback callback)
+        private void AddHotkeyCombinationToDictionary(HotkeyCombination hotkeyCombination, HotkeyCallback callback)
         {
             if (_hotkeyCallbacks.ContainsKey(hotkeyCombination))
                 throw new HotkeyAlreadyBoundException("This hotkey has already been bound");
@@ -37,7 +37,6 @@ namespace Shortcut
             _hotkeyCallbacks.Add(hotkeyCombination, callback);
         }
         
-
         private void OnHotkeyPressed(object sender, HotkeyPressedEventArgs e)
         {
             HotkeyCallback callback = _hotkeyCallbacks[e.HotkeyCombination];
@@ -60,6 +59,16 @@ namespace Shortcut
                 throw new HotkeyNotBoundException(Marshal.GetLastWin32Error());
         }
 
+        public bool HotkeyAlreadyRegistered(HotkeyCombination hotkeyCombination)
+        {
+            bool success = NativeMethods.RegisterHotKey(_hotkeyWindow.Handle, hotkeyCombination.GetHashCode(), (uint)hotkeyCombination.Modifier, (uint)hotkeyCombination.Key);
+            if (success == false)
+            {
+                return true;
+            }
+            NativeMethods.UnregisterHotKey(_hotkeyWindow.Handle, hotkeyCombination.GetHashCode());
+            return false;
+        }
 
     }
 }
