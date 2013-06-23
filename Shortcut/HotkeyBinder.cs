@@ -6,7 +6,7 @@ namespace Shortcut
 {
     public class HotkeyBinder
     {
-        public IDictionary<HotkeyCombination, HotkeyCallback> _hotkeyCallbacks =
+        public IDictionary<HotkeyCombination, HotkeyCallback> _hotkeyCallbacks = 
             new Dictionary<HotkeyCombination, HotkeyCallback>();
 
         private readonly HotkeyWindow _hotkeyWindow = new HotkeyWindow();
@@ -27,6 +27,11 @@ namespace Shortcut
             RegisterHotkeyCombination(hotkeyCombination);
 
             return callback;
+        }
+
+        public void Unbind(HotkeyCombination hotkeyCombination)
+        {
+            UnregisterHotkeyCombination(hotkeyCombination);
         }
 
         private void AddHotkeyCombinationToDictionary(HotkeyCombination hotkeyCombination, HotkeyCallback callback)
@@ -51,7 +56,7 @@ namespace Shortcut
                 throw new HotkeyAlreadyBoundException(Marshal.GetLastWin32Error());
         }
 
-        public void UnregisterHotkeyCombination(HotkeyCombination hotkeyCombination)
+        private void UnregisterHotkeyCombination(HotkeyCombination hotkeyCombination)
         {
             bool success = NativeMethods.UnregisterHotKey(_hotkeyWindow.Handle, hotkeyCombination.GetHashCode());
 
@@ -69,6 +74,5 @@ namespace Shortcut
             NativeMethods.UnregisterHotKey(_hotkeyWindow.Handle, hotkeyCombination.GetHashCode());
             return false;
         }
-
     }
 }

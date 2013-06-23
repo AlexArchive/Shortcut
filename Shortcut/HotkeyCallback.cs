@@ -22,6 +22,5 @@ namespace Shortcut
         {
             _callback.Invoke();
         }
-
     }
 }

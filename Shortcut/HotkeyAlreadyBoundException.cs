@@ -18,7 +18,4 @@ namespace Shortcut
             
         }
     }
-
-
-
 }
