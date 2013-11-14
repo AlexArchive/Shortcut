@@ -1,9 +1,7 @@
 Shortcut
 ========
 
-Shortcut makes it very easy to bind a global hotkey to a method in your application. That is, when the global hotkey is pressed your method will be called.
-
-
+Shortcut allows you to _quickly_ and _easily_ bind a global hotkey to a callback in your application. 
 
 
 ```c#
