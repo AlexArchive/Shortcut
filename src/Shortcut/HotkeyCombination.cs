@@ -6,6 +6,7 @@ namespace Shortcut
     public class HotkeyCombination : IEquatable<HotkeyCombination>
     {
         public Modifiers Modifier { get; private set; }
+
         public Keys Key { get; private set; }
 
         public HotkeyCombination(Modifiers modifier, Keys key)

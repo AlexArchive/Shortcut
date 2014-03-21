@@ -12,37 +12,47 @@ namespace Shortcut.Tests
         private readonly Action _callback = delegate { };
 
         [Test]
-        public void Have_To_Register_HotkeyCombination_With_Valid_Method()
-        {
-            Assert.Throws<ArgumentNullException>(() => _hotkeyBinder.Bind(_combination).To(null));
-            _hotkeyBinder.Unbind(_combination);
-        }
-
-        [Test]
-        public void Is_Registered_Method_Works()
-        {
-            Assert.False(_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination));
-            _hotkeyBinder.Bind(_combination).To(_callback);
-            Assert.True(_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination));
-            _hotkeyBinder.Unbind(_combination);
-            Assert.False(_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination));
-        }
-
-        [Test]
         public void That_User_Cannot_Register_Same_HotkeyCombination_Twice()
         {
             _hotkeyBinder.Bind(_combination).To(_callback);
+            
             Assert.Throws<HotkeyAlreadyBoundException>(() => _hotkeyBinder.Bind(_combination).To(_callback));
-            _hotkeyBinder.Unbind(_combination);
         }
 
         [Test]
-        public void Unbind_Hotkey_Works()
+        public void That_User_Can_Unbind_Bound_HotkeyCombination()
         {
             _hotkeyBinder.Bind(_combination);
-            Assert.DoesNotThrow(() => _hotkeyBinder.Unbind(_combination), "This hotkey has already been bound");
-            _hotkeyBinder.Bind(_combination);
             _hotkeyBinder.Unbind(_combination);
+
+            Assert.DoesNotThrow(() => _hotkeyBinder.Bind(_combination));
+        }
+
+        [Test]
+        public void Can_Successfully_Determine_Whether_HotkeyCombination_Is_Already_Registered()
+        {
+            Assert.False(_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination));
+            _hotkeyBinder.Bind(_combination).To(_callback);
+
+            Assert.True(_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination));
+            _hotkeyBinder.Unbind(_combination);
+
+            Assert.False(_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination));
+        }
+
+        [Test]
+        public void Cannot_Bind_HotkeyCombination_To_Null_Callback()
+        {
+            Assert.Throws<ArgumentNullException>(() => _hotkeyBinder.Bind(_combination).To(null));
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            if (_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination))
+            {
+                _hotkeyBinder.Unbind(_combination);
+            }
         }
     }
 }

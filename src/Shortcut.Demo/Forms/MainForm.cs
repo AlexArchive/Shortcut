@@ -20,6 +20,7 @@ namespace Shortcut.Demo.Forms
         private static void HotkeyCallback()
         {
             MessageBox.Show("Trace: HotkeyCallback()");
+
         }
     }
 }

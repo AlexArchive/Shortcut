@@ -45,7 +45,6 @@ namespace Shortcut
                 throw new HotkeyNotBoundException("This hotkey was never bound");
 
             _hotkeyCallbacks.Remove(hotkeyCombination);
-
         }
 
         private void OnHotkeyPressed(object sender, HotkeyPressedEventArgs e)
@@ -63,7 +62,6 @@ namespace Shortcut
             if (success == false)
                 throw new Win32Exception(Marshal.GetLastWin32Error());
         }
-
 
         private void UnregisterHotkeyCombination(HotkeyCombination hotkeyCombination)
         {
