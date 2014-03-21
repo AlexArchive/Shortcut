@@ -7,9 +7,15 @@ namespace Shortcut
     public sealed class HotkeyNotBoundException : Win32Exception
     {
         public HotkeyNotBoundException(int errorCode)
-            : base (errorCode)
+            : base(errorCode)
         {
-            
+
+        }
+
+        public HotkeyNotBoundException(string message)
+            : base(message)
+        {
+
         }
     }
 }

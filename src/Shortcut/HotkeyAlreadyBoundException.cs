@@ -4,18 +4,18 @@ using System.ComponentModel;
 namespace Shortcut
 {
     [Serializable]
-    public sealed class HotkeyAlreadyBoundException : Win32Exception 
+    public sealed class HotkeyAlreadyBoundException : Win32Exception
     {
-        public HotkeyAlreadyBoundException(int errorCode) 
-            : base (errorCode)
+        public HotkeyAlreadyBoundException(int errorCode)
+            : base(errorCode)
         {
-            
+
         }
 
-        public HotkeyAlreadyBoundException(string message) 
-            : base (message)
+        public HotkeyAlreadyBoundException(string message)
+            : base(message)
         {
-            
+
         }
     }
 }

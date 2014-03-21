@@ -8,6 +8,7 @@ namespace Shortcut
 
         public void To(Action callback)
         {
+            if (callback == null) throw new ArgumentNullException("callback");
             Callback = callback;
         }
 

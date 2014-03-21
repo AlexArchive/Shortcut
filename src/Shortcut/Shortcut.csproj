@@ -48,12 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modifiers.cs" />
     <Compile Include="HotkeyAlreadyBoundException.cs" />
+    <Compile Include="HotkeyNotBoundException.cs" />
+    <Compile Include="Modifiers.cs" />
     <Compile Include="HotkeyBinder.cs" />
     <Compile Include="HotkeyCallback.cs" />
     <Compile Include="HotkeyCombination.cs" />
-    <Compile Include="HotkeyNotBoundException.cs" />
     <Compile Include="HotkeyPressedEventArgs.cs" />
     <Compile Include="HotkeyWindow.cs" />
     <Compile Include="NativeMethods.cs" />
