@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortcut", "Shortcut\Shortc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortcut.Demo", "Shortcut.Demo\Shortcut.Demo.csproj", "{1FCD917B-BAE3-494D-9D65-82FBB0177660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortcut.Tests", "Shortcut.Tests\Shortcut.Tests.csproj", "{BD15AC13-5F07-4ED7-9976-71A3632B5084}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortcut.Test", "Shortcut.Tests\Shortcut.Test.csproj", "{BD15AC13-5F07-4ED7-9976-71A3632B5084}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
