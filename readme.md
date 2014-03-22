@@ -12,18 +12,18 @@ _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
 
 In order to use Shortcut in your own applications you must first reference the Shortcut library. Once you have referenced the Shortcut library, please follow the sample application listed below.
 
-You could also follow the sample project (Shortcut.Demo) that is included as part of the repository download.
+Alternatively, you could refer to the sample project called *Shortcut.Demo* that is part of the actual repository for guidance.  
 
 
 ```c#
 public partial class MainForm : Form
 {
-    // 1. Declare the HotkeyBinder
+    // 1. Declare the Shortcut.HotkeyBinder
     private readonly HotkeyBinder _hotkeyBinder = new HotkeyBinder();
     
     ...
     
-    // 2. Declare the callback method that the binder should invoke when your specified hot key is pressed.
+    // 2. Declare the method that you would like Shortcut to invoke when the specified hot key is pressed.
     private static void HotkeyCallback()
     {
         MessageBox.Show("You Pressed CTRL + F!");
@@ -31,7 +31,7 @@ public partial class MainForm : Form
     
     private void MainForm_Load(object sender, System.EventArgs e)
     {
-        // 3. Tell the HotkeyBinder which method to bind the system-wide hot key to.
+        // 3. Tell Shortcut to bind a given hot key to the call back you defined earlier. 
         var hotkeyCombination = new HotkeyCombination(Modifiers.Control, Keys.F);
         _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
     }
