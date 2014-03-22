@@ -23,7 +23,8 @@ public partial class MainForm : Form
     
     ...
     
-    // 2. Declare the method that you would like Shortcut to invoke when the specified hot key is pressed.
+    // 2. Declare the method that you would like Shortcut to invoke when the specified hot key 
+          is pressed.
     private static void HotkeyCallback()
     {
         MessageBox.Show("You Pressed CTRL + F!");
