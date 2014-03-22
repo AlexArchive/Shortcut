@@ -31,13 +31,13 @@ namespace Shortcut.Tests
         [Test]
         public void Can_Successfully_Determine_Whether_HotkeyCombination_Is_Already_Registered()
         {
-            Assert.False(_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination));
+            Assert.False(_hotkeyBinder.IsHotkeyAlreadyBound(_combination));
             _hotkeyBinder.Bind(_combination).To(_callback);
 
-            Assert.True(_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination));
+            Assert.True(_hotkeyBinder.IsHotkeyAlreadyBound(_combination));
             _hotkeyBinder.Unbind(_combination);
 
-            Assert.False(_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination));
+            Assert.False(_hotkeyBinder.IsHotkeyAlreadyBound(_combination));
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace Shortcut.Tests
         [TearDown]
         public void TearDown()
         {
-            if (_hotkeyBinder.IsHotkeyAlreadyRegistered(_combination))
+            if (_hotkeyBinder.IsHotkeyAlreadyBound(_combination))
             {
                 _hotkeyBinder.Unbind(_combination);
             }

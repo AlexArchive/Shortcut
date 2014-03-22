@@ -8,7 +8,7 @@ namespace Shortcut
     public class HotkeyPressedEventArgs : EventArgs
     {
         /// <summary>
-        /// The system-wide hotkey pressed.
+        /// The system-wide hot key pressed.
         /// </summary>
         public HotkeyCombination HotkeyCombination { get; private set; }
 

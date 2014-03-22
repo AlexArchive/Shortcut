@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Shortcut
 {
     /// <summary>
-    /// Platform Invocation methods should be declared in this class only.
+    /// Platform Invocation methods are declared by this class.
     /// </summary>
     internal static class NativeMethods
     {
@@ -16,7 +16,7 @@ namespace Shortcut
         internal static extern bool RegisterHotKey(IntPtr windowHandle, int hotkeyId, uint modifier, uint key);
 
         /// <summary>
-        /// Frees a system-wide hot key previously registered.
+        /// Frees a system-wide hot key previously registered by this application.
         /// </summary>
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool UnregisterHotKey(IntPtr windowHandle, int hotkeyId);

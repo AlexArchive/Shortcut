@@ -4,13 +4,13 @@ using System.Windows.Forms;
 namespace Shortcut
 {
     /// <summary>
-    /// Effectively a window (without a GUI) that can be used to listen for incoming WM_HOTKEY messages
-    /// posted by the Operating System.
+    /// Invisible window used to effectively look-out for incoming Windows messages that 
+    /// indicate that a system-wide hot key registered to this application has been pressed.
     /// </summary>
     internal sealed class HotkeyWindow : NativeWindow, IDisposable
     {
         /// <summary>
-        /// Occurs when a system-wide hotkey registered to this window is pressed.
+        /// Occurs when a system-wide hot key registered to this application is pressed.
         /// </summary>
         internal event EventHandler<HotkeyPressedEventArgs> HotkeyPressed = delegate { }; 
 
