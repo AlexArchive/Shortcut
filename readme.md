@@ -45,3 +45,11 @@ public partial class MainForm : Form {
     }
 }
 ```
+
+##Other
+
+Bind a system-wide hot key using the `HotkeyBinder.Bind` method. 
+Remove a binding using the `HotkeyBinder.Unbind` method. 
+Determine whether a system-wide hot key has already been bound using `HotkeyBinder.IsHotkeyAlreadyBound`.
+
+Contributions of any kind (issues, pull requests etc.) are encouraged!
