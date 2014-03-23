@@ -30,24 +30,25 @@ public partial class MainForm : Form {
     
     private void MainForm_Load(object sender, System.EventArgs e) {
     
-        // 3. Tell Shortcut to bind a specified system-wide hot key to the
+        // 3. Tell Shortcut to bind the specified system-wide hot key to the
         // callback you defined earlier. 
         //
         var hotkeyCombination = new HotkeyCombination(Modifiers.Control, Keys.F);
         _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
     
-        // 4. Optionally, bind another system-wide hot key to the same 
-        // or different callback using alternative syntax.
+        // 4. Alternative syntax.
         //
         _hotkeyBinder.Bind(Modifiers.Control | Modifiers.Shift, Keys.A).To(HotkeyCallback);    
     }
 }
 ```
 
-##Other
+##Documentation
 
-Bind a system-wide hot key using the `HotkeyBinder.Bind` method. 
-Remove a binding using the `HotkeyBinder.Unbind` method. 
-Determine whether a system-wide hot key has already been bound using `HotkeyBinder.IsHotkeyAlreadyBound`.
+Shortcut does not expose that many public members however, all of those that it does are decorated with XML comments. Some public methods that you should be aware of are as followed:
 
-Contributions of any kind (issues, pull requests etc.) are encouraged!
+* Create a system-wide hot key binding using the `HotkeyBinder.Bind` Method. 
+* Remove a binding using the `HotkeyBinder.Unbind` Method. 
+* Determine whether a system-wide hot key has already been bound using `HotkeyBinder.IsHotkeyAlreadyBound`.
+
+Contributions of any kind (issues, pull requests etc.) are encouraged :D
