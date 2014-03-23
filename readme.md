@@ -30,14 +30,13 @@ public partial class MainForm : Form {
     
     private void MainForm_Load(object sender, System.EventArgs e) {
     
-        // 3. Tell Shortcut to bind a specified system-wide hot key to the
+        // 3. Tell Shortcut to bind the specified system-wide hot key to the
         // callback you defined earlier. 
         //
         var hotkeyCombination = new HotkeyCombination(Modifiers.Control, Keys.F);
         _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
     
-        // 4. Optionally, bind another system-wide hot key to the same 
-        // or different callback using alternative syntax.
+        // 4. Alternative syntax.
         //
         _hotkeyBinder.Bind(Modifiers.Control | Modifiers.Shift, Keys.A).To(HotkeyCallback);    
     }
