@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Shortcut
 {
@@ -29,6 +30,14 @@ namespace Shortcut
             _hotkeyWindow.HotkeyPressed += OnHotkeyPressed;
         }
 
+        /// <summary>
+        /// Creates a binding.
+        /// </summary>
+        public HotkeyCallback Bind(Modifiers modifier, Keys key)
+        {
+            return Bind(new HotkeyCombination(modifier, key));
+        }
+        
         /// <summary>
         /// Creates a binding for the specified <paramref name="hotkeyCombination"/>.
         /// </summary>
