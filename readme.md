@@ -43,10 +43,12 @@ public partial class MainForm : Form {
 }
 ```
 
-##Other
+##Documentation
 
-Bind a system-wide hot key using the `HotkeyBinder.Bind` method. 
-Remove a binding using the `HotkeyBinder.Unbind` method. 
-Determine whether a system-wide hot key has already been bound using `HotkeyBinder.IsHotkeyAlreadyBound`.
+Shortcut does not expose that many public members however, all of those that it does are decorated with XML comments. Some public methods that you should be aware of are as followed:
 
-Contributions of any kind (issues, pull requests etc.) are encouraged!
+* Create a system-wide hot key binding using the `HotkeyBinder.Bind` Method. 
+* Remove a binding using the `HotkeyBinder.Unbind` Method. 
+* Determine whether a system-wide hot key has already been bound using `HotkeyBinder.IsHotkeyAlreadyBound`.
+
+Contributions of any kind (issues, pull requests etc.) are encouraged :D
