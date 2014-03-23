@@ -37,11 +37,9 @@ public partial class MainForm : Form {
         _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
     
         // 4. Optionally, bind another system-wide hot key to the same 
-        // or different callback. 
+        // or different callback using alternative syntax.
         //
-        var anotherHotkeyCombination = 
-            new HotkeyCombination(Modifiers.Control | Modifiers.Shift, Keys.A);
-        _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);    
+        _hotkeyBinder.Bind(Modifiers.Control | Modifiers.Shift, Keys.A).To(HotkeyCallback);    
     }
 }
 ```
