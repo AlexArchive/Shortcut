@@ -1,5 +1,5 @@
 #Shortcut
-Shortcut allows you to quickly and easily bind system-wide hotkeys (sometimes called global hotkeys) to callbacks defined by your application so that when the system-wide hot key in question is pressed, the bound callback will be invoked. 
+Shortcut allows you to quickly and easily bind system-wide hotkeys (sometimes called global hotkeys) to call-backs defined by your application so that when the system-wide hotkey in question is pressed, the bound call-back will be invoked. 
 
 Shortcut makes use of *fluent interfaces* to enable the following succinct syntax:
 
@@ -7,7 +7,7 @@ Shortcut makes use of *fluent interfaces* to enable the following succinct synta
 _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
 ```
 
-##How Do You Use It?
+##Quick Start
 
 
 In order to use Shortcut in your applications you must first [download](https://github.com/ByteBlast/Shortcut/archive/master.zip) and  [reference](http://msdn.microsoft.com/en-us/library/wkze6zky.aspx) the Shortcut class library. Once you have referenced the Shortcut class library, consider the following listing: 
@@ -16,34 +16,32 @@ In order to use Shortcut in your applications you must first [download](https://
 ```c#
 public partial class MainForm : Form {
 
-    // 1. Declare the Shortcut.HotkeyBinder.
+    // 1. Declare the HotkeyBinder.
     //
     private readonly HotkeyBinder _hotkeyBinder = new HotkeyBinder();
     
-    // 2. Declare the callback that you would like Shortcut to invoke when 
+    // 2. Declare the call-back that you would like Shortcut to invoke when 
     // the specified system-wide hotkey is pressed.
     //
     private static void HotkeyCallback() {
         MessageBox.Show("You pressed a system-wide hot key!");
     }
     
-    private void MainForm_Load(object sender, System.EventArgs e) {
-    
-        // 3. Tell Shortcut to bind the specified system-wide hot key to the
-        // callback you defined earlier. 
+    public MainForm() {
+        // 3. Tell Shortcut to bind the specified-system wide hotkey to the
+        // callback you declared earlier. 
         //
         var hotkeyCombination = new HotkeyCombination(Modifiers.Control, Keys.F);
         _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
-    
-        // 4. Alternative syntax.
-        //
-        // _hotkeyBinder.Bind(Modifiers.Control | Modifiers.Shift, Keys.A).To(HotkeyCallback);    
     }
 }
 ```
-Alternatively, you could refer to the sample project called *[Shortcut.Demo](https://github.com/ByteBlast/Shortcut/blob/master/src/Shortcut.Demo/Forms/MainForm.cs)* that can be found in the project repository for guidance.
+> Note that it is advisable  to register system-wide hotkeys in the constructor and not the FormLoad event handler due to an [obscure system bug](http://connect.microsoft.com/VisualStudio/feedback/details/325742/exception-assistant-dialog-box-doesnt-appear-when-debugging-in-vb2008-express) that will cause your program to hang instead of throw an exception if an already bound system-wide hotkey is registered.
+
+Alternatively, you could refer to the sample project  *[Shortcut.Demo](https://github.com/ByteBlast/Shortcut/blob/master/src/Shortcut.Demo/Forms/MainForm.cs)* for guidance.
 
 ##Documentation
+
 
 Shortcut does not expose that many public members however, all of those that it does are decorated with XML comments. Some public methods that you should be aware of are as followed:
 
@@ -53,4 +51,7 @@ Shortcut does not expose that many public members however, all of those that it 
 | `HotkeyBinder.Unbind`               | Remove a binding                                                     |
 | `HotkeyBinder.IsHotkeyAlreadyBoun`  | Determine whether a system-wide hot key has already been bound       | 
 
-Contributions of any kind (issues, pull requests etc.) are encouraged :D
+If you want to register a system-wide hotkey comprised of multiple modifiers (e.g. Ctrl, Alt + A), use the bitwise OR operator (`|`) to "combine" values like this:  
+```c#
+var hotkeyCombination = new HotkeyCombination(Modifiers.Control | Modifiers.Alt, Keys.F);
+```
