@@ -90,7 +90,15 @@ namespace Shortcut
         private void OnHotkeyPressed(object sender, HotkeyPressedEventArgs e)
         {
             HotkeyCallback callback = _hotkeyCallbacks[e.HotkeyCombination];
-            callback.Invoke();
+            try
+            {
+                callback.Invoke();
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException(
+                    string.Format("Ensure that you specify a callback for the hotkey combination: {0}.", e.HotkeyCombination));
+            }
         }
 
         /// <summary>

@@ -77,6 +77,11 @@ namespace Shortcut
             }
         }
 
+        public override string ToString()
+        {
+            return Modifier + ", " + Key;
+        }
+
         #endregion
 
         #region Operators
