@@ -9,10 +9,7 @@ namespace Shortcut.Demo.Forms
         public MainForm()
         {
             InitializeComponent();
-        }
 
-        private void MainForm_Load(object sender, System.EventArgs e)
-        {
             HotkeyCombination hotkeyCombination = new HotkeyCombination(Modifiers.Control, Keys.F);
             _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
         }
