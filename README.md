@@ -43,7 +43,7 @@ Alternatively, you could refer to the sample project  *[Shortcut.Demo](https://g
 ##Documentation
 
 
-Shortcut does not expose that many public members however, all of those that it does are decorated with XML comments. Some public methods that you should be aware of are as followed:
+Shortcut does not expose that many public members however, all of those that it does are decorated with XML comments. 
 
 Use `HotkeyBinder.IsHotkeyAlreadyBound` to determine whether a system wide hotkey has already been bound.
 
