@@ -186,5 +186,5 @@ namespace Shortcut
             if (obj == null) return null;
             return (HotkeyCombination)((Keys)obj);
         }
-    }
+    } 
 }
