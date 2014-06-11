@@ -9,7 +9,7 @@ namespace Shortcut
     /// <summary>
     /// Manages <see cref="HotkeyCombination"/> bindings.
     /// </summary>
-    public class HotkeyBinder
+    public class HotkeyBinder : IDisposable
     {
         /// <summary>
         /// Invisible window used to look-out for Windows messages posted to the application that indicate
@@ -148,6 +148,11 @@ namespace Shortcut
 
             NativeMethods.UnregisterHotKey(_hotkeyWindow.Handle, hotkeyCombination.GetHashCode());
             return false;
+        }
+
+        public void Dispose()
+        {
+            _hotkeyWindow.Dispose();
         }
     }
 }
