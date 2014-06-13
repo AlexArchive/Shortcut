@@ -1,11 +1,18 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Drawing.Design;
+using System.Globalization;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 
 namespace Shortcut
 {
     /// <summary>
     /// Represents a combination of keys that constitute a system-wide hotkey.
     /// </summary>
+    [Serializable]
+    [Editor(typeof(HotkeyCombinationEditor), typeof(UITypeEditor))]
+    [TypeConverter(typeof(HotkeyCombinationConverter))]
     public class HotkeyCombination : IEquatable<HotkeyCombination>
     {
         /// <summary>
@@ -25,6 +32,50 @@ namespace Shortcut
         {
             Key = key;
             Modifier = modifier;
+        }
+
+        // Casts are explicit as data can be lost (the win key mod)
+
+        /// <summary>
+        /// Explicit cast from HotkeyCombination to Keys
+        /// </summary>
+        public static explicit operator Keys(HotkeyCombination hotkey)
+        {
+            Keys keys = Keys.None;
+
+            if (hotkey.Modifier.HasFlag(Modifiers.Alt))
+                keys |= Keys.Alt;
+
+            if (hotkey.Modifier.HasFlag(Modifiers.Control))
+                keys |= Keys.Control;
+
+            if (hotkey.Modifier.HasFlag(Modifiers.Shift))
+                keys |= Keys.Shift;
+
+            keys |= hotkey.Key;
+
+            return keys;
+        }
+
+        /// <summary>
+        /// Extract non-modifiers from the low word of keys
+        /// </summary>
+        private static Keys ExtractNonMods(Keys keys)
+        {
+            return (Keys)((int)keys & 0x0000FFFF);
+        }
+
+        /// <summary>
+        /// Explicit cast from Keys to HotkeyCombination
+        /// </summary>
+        public static explicit operator HotkeyCombination(Keys keys)
+        {
+            var mods = Modifiers.None;
+            if (keys.HasFlag(Keys.Alt)) mods |= Modifiers.Alt;
+            if (keys.HasFlag(Keys.Control)) mods |= Modifiers.Control;
+            if (keys.HasFlag(Keys.Shift)) mods |= Modifiers.Shift;
+            Keys nonMods = ExtractNonMods(keys);
+            return new HotkeyCombination(mods, nonMods);
         }
 
         #region IEquatable<HotkeyCombination> Members
@@ -110,4 +161,30 @@ namespace Shortcut
 
         #endregion
     }
+
+    /// <summary>
+    /// Provides an editor for a HotkeyCombination 
+    /// </summary>
+    public class HotkeyCombinationEditor : ShortcutKeysEditor
+    {
+        public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
+        {
+            Keys keys = (value == null) ? Keys.None : (Keys)((HotkeyCombination)value);
+            object obj = base.EditValue(context, provider, keys);
+            return (HotkeyCombination)((Keys)obj);
+        } 
+    }
+
+    /// <summary>
+    /// Provides a converter for a HotkeyCombination 
+    /// </summary>
+    public class HotkeyCombinationConverter : KeysConverter
+    {
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            var obj = base.ConvertFrom(context, culture, value);
+            if (obj == null) return null;
+            return (HotkeyCombination)((Keys)obj);
+        }
+    } 
 }
