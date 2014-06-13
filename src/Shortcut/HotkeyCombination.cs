@@ -172,7 +172,7 @@ namespace Shortcut
             Keys keys = (value == null) ? Keys.None : (Keys)((HotkeyCombination)value);
             object obj = base.EditValue(context, provider, keys);
             return (HotkeyCombination)((Keys)obj);
-        }
+        } 
     }
 
     /// <summary>
