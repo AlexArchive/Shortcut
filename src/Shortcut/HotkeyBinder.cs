@@ -33,6 +33,9 @@ namespace Shortcut
         /// <summary>
         /// Creates a binding.
         /// </summary>
+        /// <exception cref="HotkeyAlreadyBoundException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="Win32Exception"></exception>
         public HotkeyCallback Bind(Modifiers modifier, Keys key)
         {
             return Bind(new HotkeyCombination(modifier, key));
@@ -41,6 +44,9 @@ namespace Shortcut
         /// <summary>
         /// Creates a binding for the specified <paramref name="hotkeyCombination"/>.
         /// </summary>
+        /// <exception cref="HotkeyAlreadyBoundException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="Win32Exception"></exception>
         public HotkeyCallback Bind(HotkeyCombination hotkeyCombination)
         {
             if (hotkeyCombination == null) throw new ArgumentNullException("hotkeyCombination");
@@ -54,6 +60,7 @@ namespace Shortcut
         /// <summary>
         /// Removes the binding for the specified <paramref name="hotkeyCombination"/>.
         /// </summary>
+        /// <exception cref="HotkeyNotBoundException"></exception>
         public void Unbind(HotkeyCombination hotkeyCombination)
         {
             RemoveHotkeyCombinationFromDictionary(hotkeyCombination);
