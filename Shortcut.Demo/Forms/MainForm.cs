@@ -9,14 +9,17 @@ namespace Shortcut.Demo.Forms
         public MainForm()
         {
             InitializeComponent();
+            InitialzeHotkeyBindings();
+        }
 
-            HotkeyCombination hotkeyCombination = new HotkeyCombination(Modifiers.Control, Keys.F);
-            _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
+        private void InitialzeHotkeyBindings()
+        {
+            _hotkeyBinder.Bind(Modifiers.Control, Keys.F).To(HotkeyCallback);
         }
 
         private static void HotkeyCallback()
         {
-            MessageBox.Show("Trace: HotkeyCallback()");
+            MessageBox.Show("Hello, World.");
         }
     }
 }
