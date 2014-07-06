@@ -5,9 +5,6 @@ namespace Shortcut
     /// <summary>
     /// Modifier Keys.
     /// </summary>
-    /// <remarks>
-    /// The flags indicate which combination of Modifier Keys were pressed.
-    /// </remarks>
     [Flags]
     public enum Modifiers : uint
     {
