@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortcut", "Shortcut\Shortcut.csproj", "{5DEADF0B-DC7B-430F-982E-647F7B05455D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortcut.Demo", "Shortcut.Demo\Shortcut.Demo.csproj", "{1FCD917B-BAE3-494D-9D65-82FBB0177660}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shortcut.Test", "Shortcut.Tests\Shortcut.Test.csproj", "{BD15AC13-5F07-4ED7-9976-71A3632B5084}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,12 +30,6 @@ Global
 		{1FCD917B-BAE3-494D-9D65-82FBB0177660}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1FCD917B-BAE3-494D-9D65-82FBB0177660}.Release|x86.ActiveCfg = Release|x86
 		{1FCD917B-BAE3-494D-9D65-82FBB0177660}.Release|x86.Build.0 = Release|x86
-		{BD15AC13-5F07-4ED7-9976-71A3632B5084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD15AC13-5F07-4ED7-9976-71A3632B5084}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD15AC13-5F07-4ED7-9976-71A3632B5084}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BD15AC13-5F07-4ED7-9976-71A3632B5084}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD15AC13-5F07-4ED7-9976-71A3632B5084}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD15AC13-5F07-4ED7-9976-71A3632B5084}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
