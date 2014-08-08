@@ -1,10 +1,15 @@
 #Shortcut
 Shortcut allows you to quickly and easily bind system wide hotkeys (sometimes called global hotkeys) to callbacks defined by your application so that when the system wide hotkey in question is pressed, the bound callback will be invoked. 
 
-Shortcut makes use of *fluent interfaces* to enable the following succinct syntax:
+Shortcut makes use of fluent interfaces to enable the following succinct syntax:
 
 ```c#
 _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
+
+```
+##Get it on NuGet!
+```
+Install-Package Shortcut
 ```
 
 ##Quick Start
