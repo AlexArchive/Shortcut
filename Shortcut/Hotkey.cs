@@ -17,12 +17,12 @@ namespace Shortcut
     public class Hotkey : IEquatable<Hotkey>
     {
         /// <summary>
-        /// The modifer keys that make up this <see cref="Hotkey"/>.
+        /// The modifer keys that constitute this <see cref="Hotkey"/>.
         /// </summary>
         public Modifiers Modifier { get; private set; }
 
         /// <summary>
-        /// The keys that make up this <see cref="Hotkey"/>.
+        /// The keys that constitute this <see cref="Hotkey"/>.
         /// </summary>
         public Keys Key { get; private set; }
 
