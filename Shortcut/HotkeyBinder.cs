@@ -6,8 +6,8 @@ using System.Windows.Forms;
 namespace Shortcut
 {
     /// <summary>
-    /// Used to bind and unbind <see cref="Hotkey"/>s 
-    /// to <see cref="HotkeyCallback"/>s.
+    /// Used to bind and unbind <see cref="Hotkey"/>s to 
+    /// <see cref="HotkeyCallback"/>s.
     /// </summary>
     public class HotkeyBinder : IDisposable
     {
@@ -23,15 +23,15 @@ namespace Shortcut
         }
 
         /// <summary>
-        /// Indicates whether a <see cref="Hotkey"/> has been bound already 
-        /// either by this application or another application.
+        /// Indicates whether a <see cref="Hotkey"/> has been bound already either 
+        /// by this application or another application.
         /// </summary>
         /// <param name="hotkeyCombo">
         /// The <see cref="Hotkey"/> to evaluate.
         /// </param>
         /// <returns>
-        /// <c>true</c> if the <see cref="Hotkey"/> has not been previously 
-        /// bound and is available to be bound; otherwise, <c>false</c>.
+        /// <c>true</c> if the <see cref="Hotkey"/> has not been previously bound 
+        /// and is available to be bound; otherwise, <c>false</c>.
         /// </returns>
         public bool IsHotkeyAlreadyBound(Hotkey hotkeyCombo)
         {

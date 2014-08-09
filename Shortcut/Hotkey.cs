@@ -38,13 +38,13 @@ namespace Shortcut
         #region IEquatable<HotkeyCombination> Members
 
         /// <summary>
-        /// Indicates whether the value of this <see cref="Hotkey"/> is equal 
-        /// to the value of the specified <see cref="Hotkey"/>.
+        /// Indicates whether the value of this <see cref="Hotkey"/> is equal to the
+        /// value of the specified <see cref="Hotkey"/>.
         /// </summary>
         /// <param name="other">The value to compare with this instance.</param>
         /// <returns>
-        /// <c>true</c> if the value of this <see cref="Hotkey"/> is equal to
-        /// the value of the <paramref name="other"/> parameter; otherwise, false.
+        /// <c>true</c> if the value of this <see cref="Hotkey"/> is equal to the 
+        /// value of the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
         public bool Equals(Hotkey other)
         {
@@ -58,8 +58,8 @@ namespace Shortcut
         #region Object overrides
         
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/> is equal to this
-        /// instance.
+        /// Determines whether the specified <see cref="System.Object"/> is equal to
+        /// this instance.
         /// </summary>
         /// <param name="other">
         /// The <see cref="System.Object"/> to compare with this instance.

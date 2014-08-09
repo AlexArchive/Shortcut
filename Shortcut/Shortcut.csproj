@@ -54,7 +54,7 @@
     <Compile Include="Modifiers.cs" />
     <Compile Include="HotkeyBinder.cs" />
     <Compile Include="HotkeyCallback.cs" />
-    <Compile Include="HotkeyCombination.cs" />
+    <Compile Include="Hotkey.cs" />
     <Compile Include="HotkeyPressedEventArgs.cs" />
     <Compile Include="HotkeyWindow.cs" />
     <Compile Include="NativeMethods.cs" />

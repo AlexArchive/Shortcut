@@ -10,8 +10,8 @@ namespace Shortcut
         private Action callback;
 
         /// <summary>
-        /// Indicates that the <see cref="Hotkey"/> should be bound to the 
-        /// specified <paramref name="callback"/>.
+        /// Indicates that the <see cref="Hotkey"/> should be bound to the specified
+        /// <paramref name="callback"/>.
         /// </summary>
         public void To(Action callback)
         {

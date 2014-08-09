@@ -12,8 +12,8 @@ namespace Shortcut
             CreateHandle(new CreateParams());
         }
 
-        // Unconventional, I know. But you can watch my screen-casts where I explain this 
-        // particular method in more detail if you want http://youtu.be/dvtV3jc4maY
+        // Unconventional, I know. But you can watch my screen-cast where I explain
+        // this particular method in more detail if you want: http://youtu.be/dvtV3jc4maY
         protected override void WndProc(ref Message m)
         {
             const int WM_HOTKEY = 0x0312;
