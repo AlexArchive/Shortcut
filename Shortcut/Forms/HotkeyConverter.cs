@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Shortcut.Forms
 {
-    public class HotkeyCombinationConverter : KeysConverter
+    internal class HotkeyConverter : KeysConverter
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {

@@ -12,8 +12,8 @@ namespace Shortcut
     /// Represents a combination of keys that constitute a system-wide hotkey.
     /// </summary>
     [Serializable]
-    [Editor(typeof(HotkeyCombinationEditor), typeof(UITypeEditor))]
-    [TypeConverter(typeof(HotkeyCombinationConverter))]
+    [Editor(typeof(HotkeyEditor), typeof(UITypeEditor))]
+    [TypeConverter(typeof(HotkeyConverter))]
     public class Hotkey : IEquatable<Hotkey>
     {
         /// <summary>

@@ -46,8 +46,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\HotkeyCombinationConverter.cs" />
-    <Compile Include="Forms\HotkeyCombinationEditor.cs" />
+    <Compile Include="Forms\HotkeyConverter.cs" />
+    <Compile Include="Forms\HotkeyEditor.cs" />
     <Compile Include="HotkeyContainer.cs" />
     <Compile Include="HotkeyAlreadyBoundException.cs" />
     <Compile Include="HotkeyNotBoundException.cs" />

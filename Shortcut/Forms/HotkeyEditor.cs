@@ -7,7 +7,7 @@ using System.Windows.Forms.Design;
 
 namespace Shortcut.Forms
 {
-    public class HotkeyCombinationEditor : ShortcutKeysEditor
+    internal class HotkeyEditor : ShortcutKeysEditor
     {
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
