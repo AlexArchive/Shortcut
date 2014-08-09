@@ -126,17 +126,17 @@ namespace Shortcut
 
         private void OnHotkeyPressed(object sender, HotkeyPressedEventArgs e)
         {
-            HotkeyCallback callback = container[e.Hotkey];
-            try
+            HotkeyCallback callback = container.Find(e.Hotkey);
+            
+            if (callback == null)
             {
-                callback.Invoke();
+                throw new InvalidOperationException(
+                    "You did not specify a callback for the hotkey " + e.Hotkey + ". It's not your fault, " +
+                    "because it wasn't possible to design the HotkeyBinder class in such a way that this is " +
+                    "a statically typed pre-condition, but please specify a callback.");
             }
-            catch (NullReferenceException)
-            {
-                throw new NullReferenceException(
-                    string.Format(@"Ensure that you specify a callback for the hotkey 
-                                    combination: {0}.", e.Hotkey));
-            }
+
+            callback.Invoke();
         }
 
         /// <inheritdoc />

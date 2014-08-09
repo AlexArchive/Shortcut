@@ -2,22 +2,41 @@
 
 namespace Shortcut
 {
-    internal class HotkeyContainer : Dictionary<Hotkey, HotkeyCallback>
+    internal class HotkeyContainer
     {
-        internal new void Add(Hotkey hotkeyCombo, HotkeyCallback callback)
-        {
-            if (ContainsKey(hotkeyCombo))
-                throw new HotkeyAlreadyBoundException("This HotkeyCombination has already been bound");
+        internal IDictionary<Hotkey, HotkeyCallback> container;
 
-            base.Add(hotkeyCombo, callback);
+        internal HotkeyContainer()
+        {
+            container = new Dictionary<Hotkey, HotkeyCallback>();
         }
 
-        internal new void Remove(Hotkey hotkeyCombo)
+        internal void Add(Hotkey hotkey, HotkeyCallback callback)
         {
-            if (!ContainsKey(hotkeyCombo))
-                throw new HotkeyNotBoundException("This HotkeyCombination was never bound");
+            if (container.ContainsKey(hotkey))
+            {
+                throw new HotkeyAlreadyBoundException(
+                    "This hotkey cannot be bound because it has been previously bound either by this " +
+                    "application or another running application.");
+            }
 
-            base.Remove(hotkeyCombo);
+            container.Add(hotkey, callback);
+        }
+
+        internal void Remove(Hotkey hotkey)
+        {
+            if (container.ContainsKey(hotkey))
+            {
+                throw new HotkeyNotBoundException(
+                    "This hotkey cannot be unbound because it has not previously been bound by this application");
+            }
+
+            container.Remove(hotkey);
+        }
+
+        internal HotkeyCallback Find(Hotkey hotkey)
+        {
+            return container[hotkey];
         }
     }
 }
