@@ -4,11 +4,11 @@ namespace Shortcut
 {
     internal class HotkeyPressedEventArgs : EventArgs
     {
-        internal HotkeyCombination HotkeyCombination { get; private set; }
+        internal Hotkey Hotkey { get; private set; }
 
-        internal HotkeyPressedEventArgs(HotkeyCombination hotkeyCombination)
+        internal HotkeyPressedEventArgs(Hotkey hotkey)
         {
-            HotkeyCombination = hotkeyCombination;
+            Hotkey = hotkey;
         }
     }
 }

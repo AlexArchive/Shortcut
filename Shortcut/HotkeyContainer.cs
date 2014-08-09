@@ -2,9 +2,9 @@
 
 namespace Shortcut
 {
-    internal class HotkeyContainer : Dictionary<HotkeyCombination, HotkeyCallback>
+    internal class HotkeyContainer : Dictionary<Hotkey, HotkeyCallback>
     {
-        internal new void Add(HotkeyCombination hotkeyCombo, HotkeyCallback callback)
+        internal new void Add(Hotkey hotkeyCombo, HotkeyCallback callback)
         {
             if (ContainsKey(hotkeyCombo))
                 throw new HotkeyAlreadyBoundException("This HotkeyCombination has already been bound");
@@ -12,7 +12,7 @@ namespace Shortcut
             base.Add(hotkeyCombo, callback);
         }
 
-        internal new void Remove(HotkeyCombination hotkeyCombo)
+        internal new void Remove(Hotkey hotkeyCombo)
         {
             if (!ContainsKey(hotkeyCombo))
                 throw new HotkeyNotBoundException("This HotkeyCombination was never bound");

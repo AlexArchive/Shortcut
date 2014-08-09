@@ -3,14 +3,14 @@
 namespace Shortcut
 {
     /// <summary>
-    /// Represents a callback for a <see cref="HotkeyCombination"/> binding.
+    /// Represents a callback for a <see cref="Hotkey"/> binding.
     /// </summary>
     public class HotkeyCallback
     {
         private Action _callback;
 
         /// <summary>
-        /// Indicates that the <see cref="HotkeyCombination"/> should be bound to the 
+        /// Indicates that the <see cref="Hotkey"/> should be bound to the 
         /// specified <paramref name="callback"/>.
         /// </summary>
         public void To(Action callback)

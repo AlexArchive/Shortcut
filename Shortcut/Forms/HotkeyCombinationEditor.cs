@@ -11,9 +11,9 @@ namespace Shortcut.Forms
     {
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            Keys keys = (value == null) ? Keys.None : (Keys)((HotkeyCombination)value);
+            Keys keys = (value == null) ? Keys.None : (Keys)((Hotkey)value);
             object obj = base.EditValue(context, provider, keys);
-            return (HotkeyCombination)((Keys)obj);
+            return (Hotkey)((Keys)obj);
         }
     }
 }

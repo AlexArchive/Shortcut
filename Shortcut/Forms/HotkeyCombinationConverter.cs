@@ -12,7 +12,7 @@ namespace Shortcut.Forms
         {
             var obj = base.ConvertFrom(context, culture, value);
             if (obj == null) return null;
-            return (HotkeyCombination)((Keys)obj);
+            return (Hotkey)((Keys)obj);
         }
     }
 }

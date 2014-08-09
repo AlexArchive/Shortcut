@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace Shortcut
 {
     /// <summary>
-    /// Used to bind and unbind <see cref="HotkeyCombination"/>s 
+    /// Used to bind and unbind <see cref="Hotkey"/>s 
     /// to <see cref="HotkeyCallback"/>s.
     /// </summary>
     public class HotkeyBinder : IDisposable
@@ -23,17 +23,17 @@ namespace Shortcut
         }
 
         /// <summary>
-        /// Indicates whether a <see cref="HotkeyCombination"/> has been bound already 
+        /// Indicates whether a <see cref="Hotkey"/> has been bound already 
         /// either by this application or another application.
         /// </summary>
         /// <param name="hotkeyCombo">
-        /// The <see cref="HotkeyCombination"/> to evaluate.
+        /// The <see cref="Hotkey"/> to evaluate.
         /// </param>
         /// <returns>
-        /// <c>true</c> if the <see cref="HotkeyCombination"/> has not been previously 
+        /// <c>true</c> if the <see cref="Hotkey"/> has not been previously 
         /// bound and is available to be bound; otherwise, <c>false</c>.
         /// </returns>
-        public bool IsHotkeyAlreadyBound(HotkeyCombination hotkeyCombo)
+        public bool IsHotkeyAlreadyBound(Hotkey hotkeyCombo)
         {
             bool successful =
                 NativeMethods.RegisterHotKey(
@@ -61,15 +61,15 @@ namespace Shortcut
         /// <exception cref="ArgumentNullException"></exception>
         public HotkeyCallback Bind(Modifiers modifiers, Keys keys)
         {
-            return Bind(new HotkeyCombination(modifiers, keys));
+            return Bind(new Hotkey(modifiers, keys));
         }
 
         /// <summary>
-        /// Binds a <see cref="HotkeyCombination"/> to a <see cref="HotkeyCallback"/>.
+        /// Binds a <see cref="Hotkey"/> to a <see cref="HotkeyCallback"/>.
         /// </summary>
         /// <exception cref="HotkeyAlreadyBoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
-        public HotkeyCallback Bind(HotkeyCombination hotkeyCombo)
+        public HotkeyCallback Bind(Hotkey hotkeyCombo)
         {
             if (hotkeyCombo == null) 
                 throw new ArgumentNullException("hotkeyCombo");
@@ -81,7 +81,7 @@ namespace Shortcut
             return callback;
         }
 
-        private void RegisterHotkey(HotkeyCombination hotkeyCombo)
+        private void RegisterHotkey(Hotkey hotkeyCombo)
         {
             bool successful =
                 NativeMethods.RegisterHotKey(
@@ -99,21 +99,21 @@ namespace Shortcut
         /// </summary>
         public void Unbind(Modifiers modifiers, Keys keys)
         {
-            Unbind(new HotkeyCombination(modifiers, keys));
+            Unbind(new Hotkey(modifiers, keys));
         }
 
         /// <summary>
-        /// Unbinds a previously bound <see cref="HotkeyCombination"/>.
+        /// Unbinds a previously bound <see cref="Hotkey"/>.
         /// </summary>
         /// <exception cref="HotkeyNotBoundException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
-        public void Unbind(HotkeyCombination hotkeyCombo)
+        public void Unbind(Hotkey hotkeyCombo)
         {
             _container.Remove(hotkeyCombo);
             UnregisterHotkey(hotkeyCombo);
         }
 
-        private void UnregisterHotkey(HotkeyCombination hotkeyCombo)
+        private void UnregisterHotkey(Hotkey hotkeyCombo)
         {
             bool successful =
                 NativeMethods.UnregisterHotKey(
@@ -126,7 +126,7 @@ namespace Shortcut
 
         private void OnHotkeyPressed(object sender, HotkeyPressedEventArgs e)
         {
-            HotkeyCallback callback = _container[e.HotkeyCombination];
+            HotkeyCallback callback = _container[e.Hotkey];
             try
             {
                 callback.Invoke();
@@ -135,7 +135,7 @@ namespace Shortcut
             {
                 throw new NullReferenceException(
                     string.Format(@"Ensure that you specify a callback for the hotkey 
-                                    combination: {0}.", e.HotkeyCombination));
+                                    combination: {0}.", e.Hotkey));
             }
         }
 

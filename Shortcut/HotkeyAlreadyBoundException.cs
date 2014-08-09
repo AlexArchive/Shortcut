@@ -4,26 +4,26 @@ using System.ComponentModel;
 namespace Shortcut
 {
     /// <summary>
-    /// Exception thrown to indicate that specified <see cref="HotkeyCombination"/>
+    /// Exception thrown to indicate that specified <see cref="Hotkey"/>
     /// cannot be bound because it has been previously bound either by this application
     /// or another running application.
     /// </summary>
     /// <remarks>
     /// <para>
     /// This exception normally occurs when you attempt to bind a 
-    /// <see cref="HotkeyCombination"/> that has previously been bound by this application. 
+    /// <see cref="Hotkey"/> that has previously been bound by this application. 
     /// </para>
     /// <para>
     /// This exception can also occur when another running application has already bound 
-    /// the specified <see cref="HotkeyCombination"/>.  
+    /// the specified <see cref="Hotkey"/>.  
     /// </para>
     /// <para>
     /// Use the <see cref="HotkeyBinder.Unbind"/> method to unbind a 
-    /// <see cref="HotkeyCombination"/> previously bound by this application.
+    /// <see cref="Hotkey"/> previously bound by this application.
     /// </para>
     /// <para>
     /// Use the <see cref="HotkeyBinder.IsHotkeyAlreadyBound"/> function to determine 
-    /// whether the <see cref="HotkeyCombination"/> in question has already been bound 
+    /// whether the <see cref="Hotkey"/> in question has already been bound 
     /// either by this application or another running application.
     /// </para>
     /// </remarks>

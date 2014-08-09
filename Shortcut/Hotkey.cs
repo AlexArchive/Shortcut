@@ -14,22 +14,22 @@ namespace Shortcut
     [Serializable]
     [Editor(typeof(HotkeyCombinationEditor), typeof(UITypeEditor))]
     [TypeConverter(typeof(HotkeyCombinationConverter))]
-    public class HotkeyCombination : IEquatable<HotkeyCombination>
+    public class Hotkey : IEquatable<Hotkey>
     {
         /// <summary>
-        /// The modifer keys that make up this <see cref="HotkeyCombination"/>.
+        /// The modifer keys that make up this <see cref="Hotkey"/>.
         /// </summary>
         public Modifiers Modifier { get; private set; }
 
         /// <summary>
-        /// The keys that make up this <see cref="HotkeyCombination"/>.
+        /// The keys that make up this <see cref="Hotkey"/>.
         /// </summary>
         public Keys Key { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HotkeyCombination"/> class.
+        /// Initializes a new instance of the <see cref="Hotkey"/> class.
         /// </summary>
-        public HotkeyCombination(Modifiers modifier, Keys key)
+        public Hotkey(Modifiers modifier, Keys key)
         {
             Key = key;
             Modifier = modifier;
@@ -38,15 +38,15 @@ namespace Shortcut
         #region IEquatable<HotkeyCombination> Members
 
         /// <summary>
-        /// Indicates whether the value of this <see cref="HotkeyCombination"/> is equal 
-        /// to the value of the specified <see cref="HotkeyCombination"/>.
+        /// Indicates whether the value of this <see cref="Hotkey"/> is equal 
+        /// to the value of the specified <see cref="Hotkey"/>.
         /// </summary>
         /// <param name="other">The value to compare with this instance.</param>
         /// <returns>
-        /// <c>true</c> if the value of this <see cref="HotkeyCombination"/> is equal to
+        /// <c>true</c> if the value of this <see cref="Hotkey"/> is equal to
         /// the value of the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
-        public bool Equals(HotkeyCombination other)
+        public bool Equals(Hotkey other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -73,11 +73,11 @@ namespace Shortcut
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
             if (other.GetType() != GetType()) return false;
-            return Equals((HotkeyCombination) other);
+            return Equals((Hotkey) other);
         }
 
         /// <summary>
-        /// Returns the hash code for this <see cref="HotkeyCombination"/>.
+        /// Returns the hash code for this <see cref="Hotkey"/>.
         /// </summary>
         public override int GetHashCode()
         {
@@ -105,7 +105,7 @@ namespace Shortcut
         /// <returns>
         /// <c>true</c> if values are equal to each other, otherwise <c>false</c>.
         /// </returns>
-        public static bool operator ==(HotkeyCombination left, HotkeyCombination right)
+        public static bool operator ==(Hotkey left, Hotkey right)
         {
             return Equals(left, right);
         }
@@ -118,37 +118,37 @@ namespace Shortcut
         /// <returns>
         /// <c>true</c> if values are not equal to each other, otherwise <c>false</c>.
         /// </returns>
-        public static bool operator !=(HotkeyCombination left, HotkeyCombination right)
+        public static bool operator !=(Hotkey left, Hotkey right)
         {
             return !Equals(left, right);
         }
 
-        public static explicit operator Keys(HotkeyCombination hotkeyCombination)
+        public static explicit operator Keys(Hotkey hotkey)
         {
             Keys keys = Keys.None;
 
-            if (hotkeyCombination.Modifier.HasFlag(Modifiers.Alt))
+            if (hotkey.Modifier.HasFlag(Modifiers.Alt))
                 keys |= Keys.Alt;
 
-            if (hotkeyCombination.Modifier.HasFlag(Modifiers.Control))
+            if (hotkey.Modifier.HasFlag(Modifiers.Control))
                 keys |= Keys.Control;
 
-            if (hotkeyCombination.Modifier.HasFlag(Modifiers.Shift))
+            if (hotkey.Modifier.HasFlag(Modifiers.Shift))
                 keys |= Keys.Shift;
 
-            keys |= hotkeyCombination.Key;
+            keys |= hotkey.Key;
 
             return keys;
         }
 
-        public static explicit operator HotkeyCombination(Keys keys)
+        public static explicit operator Hotkey(Keys keys)
         {
             var mods = Modifiers.None;
             if (keys.HasFlag(Keys.Alt)) mods |= Modifiers.Alt;
             if (keys.HasFlag(Keys.Control)) mods |= Modifiers.Control;
             if (keys.HasFlag(Keys.Shift)) mods |= Modifiers.Shift;
             Keys nonMods = ExtractNonMods(keys);
-            return new HotkeyCombination(mods, nonMods);
+            return new Hotkey(mods, nonMods);
         }
 
         private static Keys ExtractNonMods(Keys keys)
