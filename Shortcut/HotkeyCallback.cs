@@ -7,7 +7,7 @@ namespace Shortcut
     /// </summary>
     public class HotkeyCallback
     {
-        private Action _callback;
+        private Action callback;
 
         /// <summary>
         /// Indicates that the <see cref="Hotkey"/> should be bound to the 
@@ -16,12 +16,12 @@ namespace Shortcut
         public void To(Action callback)
         {
             if (callback == null) throw new ArgumentNullException("callback");
-            _callback = callback;
+            this.callback = callback;
         }
 
         internal void Invoke()
         {
-            _callback.Invoke();
+            callback.Invoke();
         }
     }
 }

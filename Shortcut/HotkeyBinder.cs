@@ -11,15 +11,15 @@ namespace Shortcut
     /// </summary>
     public class HotkeyBinder : IDisposable
     {
-        private readonly HotkeyContainer _container = new HotkeyContainer();
-        private readonly HotkeyWindow _hotkeyWindow = new HotkeyWindow();
+        private readonly HotkeyContainer container = new HotkeyContainer();
+        private readonly HotkeyWindow hotkeyWindow = new HotkeyWindow();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HotkeyBinder"/> class.
         /// </summary>
         public HotkeyBinder()
         {
-            _hotkeyWindow.HotkeyPressed += OnHotkeyPressed;
+            hotkeyWindow.HotkeyPressed += OnHotkeyPressed;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Shortcut
         {
             bool successful =
                 NativeMethods.RegisterHotKey(
-                    _hotkeyWindow.Handle,
+                    hotkeyWindow.Handle,
                     hotkeyCombo.GetHashCode(),
                     (uint)hotkeyCombo.Modifier,
                     (uint)hotkeyCombo.Key);
@@ -46,7 +46,7 @@ namespace Shortcut
                 return true;
 
             NativeMethods.UnregisterHotKey(
-                _hotkeyWindow.Handle,
+                hotkeyWindow.Handle,
                 hotkeyCombo.GetHashCode());
 
             return false;
@@ -75,7 +75,7 @@ namespace Shortcut
                 throw new ArgumentNullException("hotkeyCombo");
 
             HotkeyCallback callback = new HotkeyCallback();
-            _container.Add(hotkeyCombo, callback);
+            container.Add(hotkeyCombo, callback);
             RegisterHotkey(hotkeyCombo);
 
             return callback;
@@ -85,7 +85,7 @@ namespace Shortcut
         {
             bool successful =
                 NativeMethods.RegisterHotKey(
-                    _hotkeyWindow.Handle,
+                    hotkeyWindow.Handle,
                     hotkeyCombo.GetHashCode(),
                     (uint)hotkeyCombo.Modifier,
                     (uint)hotkeyCombo.Key);
@@ -109,7 +109,7 @@ namespace Shortcut
         /// <exception cref="ArgumentNullException"></exception>
         public void Unbind(Hotkey hotkeyCombo)
         {
-            _container.Remove(hotkeyCombo);
+            container.Remove(hotkeyCombo);
             UnregisterHotkey(hotkeyCombo);
         }
 
@@ -117,7 +117,7 @@ namespace Shortcut
         {
             bool successful =
                 NativeMethods.UnregisterHotKey(
-                    _hotkeyWindow.Handle, 
+                    hotkeyWindow.Handle, 
                     hotkeyCombo.GetHashCode());
 
             if (!successful)
@@ -126,7 +126,7 @@ namespace Shortcut
 
         private void OnHotkeyPressed(object sender, HotkeyPressedEventArgs e)
         {
-            HotkeyCallback callback = _container[e.Hotkey];
+            HotkeyCallback callback = container[e.Hotkey];
             try
             {
                 callback.Invoke();
@@ -142,7 +142,7 @@ namespace Shortcut
         /// <inheritdoc />
         public void Dispose()
         {
-            _hotkeyWindow.Dispose();
+            hotkeyWindow.Dispose();
         }
     }
 }
