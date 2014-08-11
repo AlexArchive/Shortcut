@@ -48,6 +48,9 @@
   <ItemGroup>
     <Compile Include="Forms\HotkeyConverter.cs" />
     <Compile Include="Forms\HotkeyEditor.cs" />
+    <Compile Include="Forms\HotkeyTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="HotkeyContainer.cs" />
     <Compile Include="HotkeyAlreadyBoundException.cs" />
     <Compile Include="HotkeyNotBoundException.cs" />

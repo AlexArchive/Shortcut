@@ -10,5 +10,8 @@ namespace Shortcut
 
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool UnregisterHotKey(IntPtr windowHandle, int hotkeyId);
+
+        [DllImport("user32.dll")]
+        internal static extern bool HideCaret(IntPtr controlHandle);
     }
 }
