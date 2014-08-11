@@ -9,6 +9,8 @@ namespace Shortcut
     {
         private Action callback;
 
+        public bool Assigned { get { return callback != null; }}  
+
         /// <summary>
         /// Indicates that the <see cref="Hotkey"/> should be bound to the specified
         /// <paramref name="callback"/>.

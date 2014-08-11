@@ -128,7 +128,7 @@ namespace Shortcut
         {
             HotkeyCallback callback = container.Find(e.Hotkey);
             
-            if (callback == null)
+            if (!callback.Assigned)
             {
                 throw new InvalidOperationException(
                     "You did not specify a callback for the hotkey " + e.Hotkey + ". It's not your fault, " +
