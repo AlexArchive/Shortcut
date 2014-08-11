@@ -131,7 +131,7 @@ namespace Shortcut
             if (!callback.Assigned)
             {
                 throw new InvalidOperationException(
-                    "You did not specify a callback for the hotkey " + e.Hotkey + ". It's not your fault, " +
+                    "You did not specify a callback for the hotkey: \"" + e.Hotkey + "\". It's not your fault, " +
                     "because it wasn't possible to design the HotkeyBinder class in such a way that this is " +
                     "a statically typed pre-condition, but please specify a callback.");
             }
