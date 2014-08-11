@@ -25,7 +25,7 @@ namespace Shortcut
 
         internal void Remove(Hotkey hotkey)
         {
-            if (container.ContainsKey(hotkey))
+            if (!container.ContainsKey(hotkey))
             {
                 throw new HotkeyNotBoundException(
                     "This hotkey cannot be unbound because it has not previously been bound by this application");
