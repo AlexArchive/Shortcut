@@ -1,6 +1,4 @@
-﻿// Contributor: Brian Ferguson
-
-using Shortcut.Forms;
+﻿using Shortcut.Forms;
 using System;
 using System.ComponentModel;
 using System.Drawing.Design;
@@ -121,40 +119,6 @@ namespace Shortcut
         public static bool operator !=(Hotkey left, Hotkey right)
         {
             return !Equals(left, right);
-        }
-
-        public static explicit operator Keys(Hotkey hotkey)
-        {
-            Keys keys = Keys.None;
-
-            if (hotkey.Modifier.HasFlag(Modifiers.Alt))
-                keys |= Keys.Alt;
-
-            if (hotkey.Modifier.HasFlag(Modifiers.Control))
-                keys |= Keys.Control;
-
-            if (hotkey.Modifier.HasFlag(Modifiers.Shift))
-                keys |= Keys.Shift;
-
-            keys |= hotkey.Key;
-
-            return keys;
-        }
-
-        public static explicit operator Hotkey(Keys keys)
-        {
-            var mods = Modifiers.None;
-            if (keys.HasFlag(Keys.Alt)) mods |= Modifiers.Alt;
-            if (keys.HasFlag(Keys.Control)) mods |= Modifiers.Control;
-            if (keys.HasFlag(Keys.Shift)) mods |= Modifiers.Shift;
-            Keys nonMods = ExtractNonMods(keys);
-            return new Hotkey(mods, nonMods);
-        }
-
-        private static Keys ExtractNonMods(Keys keys)
-        {
-            // Brian: Extract non-modifiers from the low word of keys
-            return (Keys)((int)keys & 0x0000FFFF);
         }
 
         #endregion
