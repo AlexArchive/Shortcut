@@ -6,7 +6,7 @@ namespace Shortcut
     /// Modifier Keys.
     /// </summary>
     [Flags]
-    public enum Modifiers : uint
+    public enum Modifiers
     {
         /// <summary>
         /// No modifier key pressed.
