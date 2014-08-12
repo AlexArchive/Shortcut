@@ -4,7 +4,7 @@ namespace Shortcut
 {
     internal class HotkeyContainer
     {
-        internal IDictionary<Hotkey, HotkeyCallback> container;
+        private readonly IDictionary<Hotkey, HotkeyCallback> container;
 
         internal HotkeyContainer()
         {
