@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Shortcut.Demo.Forms;
+using Shortcut.Demo.WinForms.Forms;
 
-namespace Shortcut.Demo
+namespace Shortcut.Demo.WinForms
 {
     static class Program
     {

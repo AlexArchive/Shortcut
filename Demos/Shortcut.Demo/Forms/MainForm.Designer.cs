@@ -1,4 +1,4 @@
-﻿namespace Shortcut.Demo.Forms
+﻿namespace Shortcut.Demo.WinForms.Forms
 {
     partial class MainForm
     {
@@ -36,9 +36,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 13);
+            this.label1.Size = new System.Drawing.Size(205, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Run this application and press Ctrl +F";
+            this.label1.Text = "Run this application and press Ctrl + F";
             // 
             // MainForm
             // 

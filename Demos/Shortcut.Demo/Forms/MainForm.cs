@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Shortcut.Demo.Forms
+namespace Shortcut.Demo.WinForms.Forms
 {
     public partial class MainForm : Form
     {
