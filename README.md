@@ -5,16 +5,13 @@ Shortcut makes use of fluent interfaces to enable the following succinct syntax:
 
 ```c#
 _hotkeyBinder.Bind(hotkeyCombination).To(HotkeyCallback);
-
 ```
+
 ##Get it on NuGet!
 ```
 Install-Package Shortcut
 ```
-
 ##Quick Start
-
-
 In order to use Shortcut in your applications you must first [download](https://github.com/ByteBlast/Shortcut/archive/master.zip) and  [reference](http://msdn.microsoft.com/en-us/library/wkze6zky.aspx) the Shortcut class library. Once you have referenced the Shortcut class library, consider the following listing: 
 
 
@@ -43,11 +40,11 @@ public partial class MainForm : Form {
 ```
 > Note that it is advisable  to **register system wide hotkeys in the constructor and not the FormLoad event handler** due to an [obscure system bug](http://connect.microsoft.com/VisualStudio/feedback/details/325742/exception-assistant-dialog-box-doesnt-appear-when-debugging-in-vb2008-express) that will cause your program to hang instead of throw an exception if an already bound system wide hotkey is registered.
 
-Alternatively, you could refer to the sample project  *[Shortcut.Demo](https://github.com/ByteBlast/Shortcut/blob/master/src/Shortcut.Demo/Forms/MainForm.cs)* for guidance.
+Alternatively, you could refer to the [demo projects](https://github.com/ByteBlast/Shortcut/tree/master/Demos) for guidance.
+
+Shortcut was predominantly developed for use with Windows Forms however, it also works well with console applications and WPF applications (again, see the demos).
 
 ##Documentation
-
-
 Shortcut does not expose that many public members however, all of those that it does are decorated with XML comments. 
 
 Use `HotkeyBinder.IsHotkeyAlreadyBound` to determine whether a system wide hotkey has already been bound.
